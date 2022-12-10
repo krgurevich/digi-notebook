@@ -1,1 +1,0 @@
-// CRUD create (.post) read (.get) update (.post) delete (.delete)
