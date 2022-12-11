@@ -9,12 +9,12 @@ const {
 const uuid = require("../helpers/uuid");
 const dbRoute = "./db/db.json";
 
-// GET Route for retrieving all the feedback
+// GET Route for retrieving all notes
 router.get("/", (req, res) =>
   readFromFile(dbRoute).then((data) => res.json(JSON.parse(data)))
 );
 
-// POST Route for submitting feedback
+// POST Route for submitting notes
 router.post("/", (req, res) => {
   // Destructuring assignment for the items in req.body
   const { title, text } = req.body;
@@ -48,6 +48,7 @@ router.put("/:id", async (req, res) => {
 
   if (found) {
     const updNote = req.body;
+    console.log(updNote);
     const updNotes = notes.map((note) => {
       if (note.note_id === req.params.id)
         return {
@@ -57,7 +58,6 @@ router.put("/:id", async (req, res) => {
         };
       return note;
     });
-    console.log(updNotes);
     writeToFile(dbRoute, updNotes);
 
     res.json({ Msg: "Note updated", updNote: updNote.title });

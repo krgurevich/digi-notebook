@@ -17,27 +17,26 @@
 <body>
   <nav class="navbar bg-info">
     <a class="navbar-brand text-light p-3" href="index.html">Digi-Notebook</a>
-    <div class="icons">
-      <i class="fas fa-save text-light" id="save-note"></i>
-      <i class="fas fa-plus text-light" id="new-note"></i>
-      <i class="fas fa-edit text-light" id="edit-note"></i>
-      <i class="fas fa-trash text-light" id="delete-note"></i>
+    <div id="buttons" class="icons">
+      <button id="save-note"><i class="fas fa-save text-light"></i></button>
+      <button id="add-note"><i class="fas fa-plus text-light"></i></button>
+      <button id="delete-note"><i class="fas fa-trash text-light"></i></button>
     </div>
   </nav>
   <div class="container-fluid">
     <div class="row">
       <div class="col-4 list-container">
         <div class="card">
-          <ul class="list-group"></ul>
+          <ul id="allNotes" class="list-group"></ul>
         </div>
       </div>
-      <div class="col-8" id="noteForm">
-        <input class="note-title" placeholder="Note Title" maxlength="28" type="text" />
-        <textarea class="note-textarea" placeholder="Note Text"></textarea>
+      <div class="col-8">
+        <input id="targetTitle" class="note-title" placeholder="Note Title" maxlength="28" type="text" />
+        <textarea id="targetText" class="note-textarea" placeholder="Note Text"></textarea>
       </div>
     </div>
   </div>
-  <script src="/assets/js/index.js"></script>
+  <script src="../scripts/notes.js"></script>
 </body>
 
 </html>

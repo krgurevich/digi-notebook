@@ -1,16 +1,7 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "title": "meeting",
-        "note_id": "456",
-        "text": "presentation"
-    },
-    {
         "title": "Team Meeting",
-        "text": "Presentation",
-        "note_id": "e9aa"
+        "text": "Weekly Status Update",
+        "note_id": "baf0"
     }
 ]
