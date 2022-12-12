@@ -8,17 +8,13 @@ body {
 button {
   border: none;
   background-color: transparent;
-}
-
-.save-note {
-  display: none;
+  cursor: pointer;
 }
 
 .icons i {
   margin-left: 15px;
   margin-right: 15px;
   font-size: 1.5rem;
-  cursor: pointer;
 }
 
 .note-textarea,
@@ -38,7 +34,7 @@ button {
 .note-title {
   height: 50px;
   margin-top: 13px;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .note-title:read-only,

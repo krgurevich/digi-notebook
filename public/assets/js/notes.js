@@ -9,6 +9,7 @@ const deleteNote = document.getElementById("delete-note");
 
 // Fetch to get all notes
 async function getAllNotes() {
+  localStorage.removeItem("id");
   let allNotes = await fetch("/api/notes/")
     .then((res) => res.json())
     .then((data) => data);
@@ -21,7 +22,7 @@ async function getAllNotes() {
 
     li.innerHTML = `
     <span>${note.title}</span>
-    <span>${note.text}</span>
+    <span onclick="delTargetNote()" id="delete-note"><i class="fas fa-trash"></i></span>
     `;
 
     li.addEventListener("click", () => {
@@ -35,7 +36,7 @@ async function getAllNotes() {
   });
 }
 
-function editNote() {
+function editTargetNote() {
   const noteId = localStorage.getItem("id");
   const title = targetTitle.value;
   const text = targetText.value;
@@ -45,20 +46,32 @@ function editNote() {
     title: title,
     text: text,
   };
-  fetch(`/api/notes/${noteId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(updNote),
-  }).then(() => {
-    window.location.reload();
-  });
+
+  if (noteId)
+    fetch(`/api/notes/${noteId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updNote),
+    }).then(() => {
+      window.location.reload();
+    });
+  else {
+    fetch(`/api/notes/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updNote),
+    }).then(() => {
+      window.location.reload();
+    });
+  }
 }
 
 function delTargetNote() {
   const noteId = localStorage.getItem("id");
-
   fetch(`/api/notes/${noteId}`, {
     method: "DELETE",
     headers: {
@@ -67,9 +80,15 @@ function delTargetNote() {
   }).then(() => {
     window.location.reload();
   });
-};
+}
 
-saveNote.addEventListener("click", editNote);
-deleteNote.addEventListener("click", delTargetNote);
+function addNewNote() {
+  targetText.value = "";
+  targetTitle.value = "";
+  localStorage.removeItem("id");
+}
+
+addNote.addEventListener("click", addNewNote);
+saveNote.addEventListener("click", editTargetNote);
 
 getAllNotes();

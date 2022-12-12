@@ -1,7 +1,12 @@
 [
     {
         "title": "Team Meeting",
-        "text": "Weekly Status Update",
-        "note_id": "baf0"
+        "text": "Presentation",
+        "note_id": "17b6"
+    },
+    {
+        "title": "Team Lunch",
+        "text": "Cafeteria",
+        "note_id": "ff3d"
     }
 ]
