@@ -41,6 +41,7 @@ router.post("/", (req, res) => {
   }
 });
 
+// PUT route for updating an existing note
 router.put("/:id", async (req, res) => {
   const notes = await readFromFile(dbRoute).then((data) => JSON.parse(data));
   console.log(notes);
@@ -66,6 +67,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// Delete route for deleting an existing note
 router.delete("/:id", async (req, res) => {
   const notes = await readFromFile(dbRoute).then((data) => JSON.parse(data));
   console.log(notes);

@@ -16,15 +16,13 @@ async function getAllNotes() {
   console.log(allNotes);
   // Use map method for each note
   allNotes.map((note) => {
-    // Add event listener to the button
-
+    //  Create li element for each note
     let li = document.createElement("li");
 
     li.innerHTML = `
-    <span>${note.title}</span>
-    <span onclick="delTargetNote()" id="delete-note"><i class="fas fa-trash"></i></span>
+    <li class="list-group-item">${note.title}    
     `;
-
+    // Add event listener to the li on click
     li.addEventListener("click", () => {
       targetTitle.defaultValue = note.title;
       targetText.defaultValue = note.text;
@@ -36,6 +34,7 @@ async function getAllNotes() {
   });
 }
 
+// Function to save a new note and an existing note once edited
 function editTargetNote() {
   const noteId = localStorage.getItem("id");
   const title = targetTitle.value;
@@ -69,7 +68,7 @@ function editTargetNote() {
     });
   }
 }
-
+// Function to delete an existing note
 function delTargetNote() {
   const noteId = localStorage.getItem("id");
   fetch(`/api/notes/${noteId}`, {
@@ -82,6 +81,7 @@ function delTargetNote() {
   });
 }
 
+// Sets a new note
 function addNewNote() {
   targetText.value = "";
   targetTitle.value = "";
@@ -90,5 +90,6 @@ function addNewNote() {
 
 addNote.addEventListener("click", addNewNote);
 saveNote.addEventListener("click", editTargetNote);
+deleteNote.addEventListener("click", delTargetNote);
 
 getAllNotes();
