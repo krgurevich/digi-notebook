@@ -26,9 +26,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 GitHub Repository: https://github.com/krgurevich/digi-notebook
 
-GitHub Web Page:
-
-Heroku Repository:
+Heroku Web Page: https://digi-notebook.herokuapp.com/
 
 ## Screenshot
 
